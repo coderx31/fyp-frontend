@@ -3,6 +3,8 @@ import Home from './components/Home'
 import About from './components/About'
 import FAQ from './components/FAQ'
 import Navigation from './components/Navigation'
+import Feedback from './components/Feedback'
+import './App.css'
 
 function App() {
   
@@ -15,6 +17,7 @@ function App() {
           <Route path='/' Component={Home} />
           <Route path='/about' Component={About} />
           <Route path='/faq'  Component={FAQ} />
+          <Route path='/feedback' Component={Feedback}/>
         </Routes>
       </div>
     </Router>

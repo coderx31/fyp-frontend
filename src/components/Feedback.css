@@ -1,0 +1,118 @@
+.feedback {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #0d192e;
+}
+
+.feedback .container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 20px;
+    height: 600px;
+    background: #122647;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback .container .formBx {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback .container .formBx form {
+    position: relative;
+    width: 100%;
+    padding: 0 0 0 75px;
+}
+
+.feedback .container .formBx h2 {
+    color: #fff;
+    font-weight: 500;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+
+.feedback .container .formBx form .inputBox {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.feedback .container .formBx form .inputBox:last-child {
+    margin-bottom: 0px;
+}
+
+.feedback .container .formBx form .inputBox input,
+.feedback .container .formBx form .inputBox textarea {
+    position: relative;
+    background: transparent;
+    outline: none;
+    border: none;
+    width: 100%;
+    color: #fff;
+    padding-bottom: 10px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+    resize: none;
+}
+
+.feedback .container .formBx form .inputBox textarea {
+    height: 100px;
+}
+
+.feedback .container .formBx form .inputBox input[type="submit"] {
+    background: #fff;
+    padding: 8px 20px;
+    margin-top: -10px;
+    width: 100px;
+    cursor: pointer;
+    background: #ff5064;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.feedback .container .formBx form .inputBox input[type="submit"]:focus {
+    background: #1bfaad;
+    color: #111;
+}
+
+.feedback .formBx form .inputBox span {
+    position: absolute;
+    left: 0;
+    font-size: 16px;
+    font-weight: 300;
+    display: inline-block;
+    pointer-events: none;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.2s;
+}
+
+.feedback .container .formBx form .inputBox input:focus ~ span ,
+.feedback .container .formBx form .inputBox textarea:focus ~ span,
+.feedback .container .formBx form .inputBox input:valid ~ span,
+.feedback .container .formBx form .inputBox textarea:valid ~ span{
+    transform: translateY(-24px);
+    color: #1bfaad;
+    font-size: 14px;
+}
+
+.feedback .container .formBx form .inputBox input,
+.feedback .container .formBx form .inputBox textarea,
+.feedback .container .formBx form .inputBox input:valid,
+.feedback .container .formBx form .inputBox textarea:valid {
+    border-bottom-color: #fff;
+}
