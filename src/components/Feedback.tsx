@@ -5,7 +5,7 @@ const Feedback = () => {
   const [formData, setFormData] = useState({
     name : '',
     email: '',
-    message: ''
+    description: ''
   });
 
   const handleChange = (e : React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -17,6 +17,12 @@ const Feedback = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    setFormData({
+      name: '',
+      email: '',
+      description: ''
+    })
 
     fetch('http://127.0.0.1:5000/api/v1/feedback', {
       method: 'POST',
@@ -47,7 +53,7 @@ const Feedback = () => {
             <span>Email Address</span>
           </div>
           <div className='inputBox'>
-            <textarea required name='message' value={formData.message}></textarea>
+            <textarea required name='description' value={formData.description} onChange={handleChange}></textarea>
             <span>Type Your Message Here...</span>
           </div>
           <div className='inputBox'>
