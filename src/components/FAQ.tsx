@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './FAQ.css'
+import { toast } from 'sonner'
 
 interface FAQ {
   _id: {
@@ -15,13 +16,7 @@ const FAQ = () => {
   const [faqs, setFaqs] = useState<FAQ[]>([])
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
-  const handleExanpandables = () => {
-    
-  }
-
-
   useEffect(() => {
-    
     const addEventListernersToContentBx = () => {
       const accordions = document.getElementsByClassName("contentBx")
       
@@ -35,21 +30,26 @@ const FAQ = () => {
     }
 
 
-    const fetchFaqs = () => {
+    const fetchFaqs = async () => {
+      //toast.loading("Loading ...")
       axios.get('http://127.0.0.1:5000/api/v1/faqs')
       .then(response => {
         console.log(response.data.data)
         if (JSON.stringify(response.data.data) !== JSON.stringify(faqs)) {
           setFaqs(response.data.data)
         }
+        
       })
       .catch(err => {
         console.error('error fetching data', err)
       })
     }
 
-    fetchFaqs()
-    console.log(faqs);
+    toast.promise(fetchFaqs, {
+      loading: 'Loading ...',
+      success: () => `FAQs Loaded Successfully`,
+      error: 'Failed to load FAQs'
+    })
     addEventListernersToContentBx()
     
   }, [])

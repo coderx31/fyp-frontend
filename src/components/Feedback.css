@@ -18,6 +18,12 @@
     align-items: center;
 }
 
+.feedback .container#blur.active{
+    filter: blur(20px);
+    pointer-events: none;
+    user-select: none;
+}
+
 .feedback .container .formBx {
     width: 50%;
     display: flex;
@@ -115,4 +121,41 @@
 .feedback .container .formBx form .inputBox input:valid,
 .feedback .container .formBx form .inputBox textarea:valid {
     border-bottom-color: #fff;
+}
+
+#popup {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    padding: 50px;
+    box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#popup h2 {
+    font-weight: 600px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#popup a {
+    position: relative;
+    padding: 5px 20px;
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #fff;
+    background: #111;
+}
+
+#popup.active {
+    top: 50%;
+    visibility: visible;
+    opacity: 1;
+    transition: 0.5s;
 }
