@@ -44,6 +44,10 @@
     overflow-y: auto;
 }
 
+.accordion .contentBx .content p {
+    color: #000;
+}
+
 .accordion .contentBx.active .content {
     height: fit-content;
     padding: 10px;

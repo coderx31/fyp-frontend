@@ -16,50 +16,40 @@ const FAQ = () => {
   const [faqs, setFaqs] = useState<FAQ[]>([])
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
-  useEffect(() => {
-    const addEventListernersToContentBx = () => {
-      const accordions = document.getElementsByClassName("contentBx")
-      
-     
-      for (let i = 0; i<accordions.length; i++) {
-        accordions[i].addEventListener("click", () => {
-          accordions[i].classList.toggle("active")
-        })
-      }
-      
+  const toggle = (i: number) => {
+    if (selectedIndex == i) {
+      return setSelectedIndex(-1)
     }
+    setSelectedIndex(i)
+  }
 
 
+  useEffect(() => {
     const fetchFaqs = async () => {
-      //toast.loading("Loading ...")
       axios.get('http://127.0.0.1:5000/api/v1/faqs')
       .then(response => {
-        console.log(response.data.data)
-        if (JSON.stringify(response.data.data) !== JSON.stringify(faqs)) {
-          setFaqs(response.data.data)
-        }
-        
+        setFaqs(response.data.data);
       })
       .catch(err => {
-        console.error('error fetching data', err)
+        toast.error("Failed to load FAQs");
       })
     }
 
+    // TODO: error is not loading, it is always giving success toast message
     toast.promise(fetchFaqs, {
       loading: 'Loading ...',
       success: () => `FAQs Loaded Successfully`,
       error: 'Failed to load FAQs'
     })
-    addEventListernersToContentBx()
     
   }, [])
 
   return (
     <div className='accordion'>
-      {faqs.map((faq) => {
+      {faqs.map((faq, i) => {
         return (
-        <div key={faq.uuid}className='contentBx'>
-          <div className='label'>{faq.question}</div>
+        <div key={faq.uuid} className={selectedIndex === i ? 'contentBx active' : 'contentBx'}>
+          <div className='label' onClick={() => toggle(i)}>{faq.question}</div>
           <div className='content'>
             <p>{faq.answer}</p>
           </div>

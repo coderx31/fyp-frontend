@@ -44,7 +44,7 @@ const Feedback = () => {
       })
     })
     .catch(err => {
-      toast.error("Feedback adding failed", { duration: 2000 })
+      toast.error("Feedback adding failed, Please try again", { duration: 2000 })
     })
   }
 

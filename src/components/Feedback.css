@@ -124,6 +124,7 @@
 }
 
 #popup {
+    z-index: 1000;
     position: fixed;
     top: 40%;
     left: 50%;
@@ -151,6 +152,10 @@
     text-decoration: none;
     color: #fff;
     background: #111;
+}
+
+#popup p {
+    color: #000;
 }
 
 #popup.active {
