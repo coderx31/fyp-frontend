@@ -4,7 +4,6 @@ import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import { toast } from "sonner";
 import { MdCloudUpload, MdDelete, MdCheckCircleOutline } from 'react-icons/md'
-import { AiFillFileImage } from 'react-icons/ai'
 import './FileUploader.css'
 
 interface Uploader {
