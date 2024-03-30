@@ -5,6 +5,7 @@ import axios from "axios";
 import { toast } from "sonner";
 import { MdCloudUpload, MdDelete, MdCheckCircleOutline } from 'react-icons/md'
 import './FileUploader.css'
+import BACKEND_HOST from "../api/api";
 
 interface Uploader {
     onFileUploaded: (file:File) => void
@@ -56,14 +57,13 @@ const FileUploader = ({onFileUploaded} : Uploader) => {
         formData.append('file', file);
 
         try {
-            const response = await axios.post('http://127.0.0.1:5000/api/v1/audio/upload', formData, {
+            const response = await axios.post(`${BACKEND_HOST}/api/v1/audio/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
             });
 
             if (response.status === 201) {
-                // need to handle success scenarios and display the response to user
                 toast.success("File Uploaded Successfully", { duration: 2000 })
                 
                 setEmotion(response.data)
@@ -96,7 +96,6 @@ const FileUploader = ({onFileUploaded} : Uploader) => {
                         }
                 </form>
                 <div className="upload">
-                    {/* <AiFillFileImage color="#1475cf" /> */}
                     {selectedFile && (
                         <button className="upload-btn" onClick={() => handleFileUpload(selectedFile)}>Upload File</button>
                     )}
@@ -105,9 +104,6 @@ const FileUploader = ({onFileUploaded} : Uploader) => {
                         <MdDelete onClick={() => setSelectedFile(null)} />
                     </span>
                 </div>
-                {/* {selectedFile && (
-                    <button className="upload-btn" onClick={() => handleFileUpload(selectedFile)}>Upload File</button>
-                )} */}
         </div>
         <div id='popup'>
       <h2>{emotion?.identified_emotion}</h2>

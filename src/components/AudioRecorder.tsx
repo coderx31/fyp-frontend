@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, {useRef, useState} from "react";
 import { toast } from "sonner";
+import BACKEND_HOST from '../api/api'
 
 const AudioRecorder = () => {
     const [isRecording, setIsRecording] = useState(false);
@@ -48,7 +49,7 @@ const AudioRecorder = () => {
         if (recordedAudioBlob) {
             try {
                 const blobToBase64 = await convertToBase64(recordedAudioBlob);
-                const response = await axios.post('http://127.0.0.1:5000/api/v1/audio/record', {
+                const response = await axios.post(`${BACKEND_HOST}/api/v1/audio/record`, {
                     audio: blobToBase64,
                     headers: {
                         'Content-Type': 'application/json'

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Feedback.css'
 import  { toast } from 'sonner'
+import BACKEND_HOST from '../api/api'
 
 const Feedback = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const Feedback = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    fetch('http://127.0.0.1:5000/api/v1/feedback', {
+    fetch(`${BACKEND_HOST}/api/v1/feedback`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './FAQ.css'
 import { toast } from 'sonner'
+import BACKEND_HOST from '../api/api'
 
 interface FAQ {
   _id: {
@@ -26,7 +27,7 @@ const FAQ = () => {
 
   useEffect(() => {
     const fetchFaqs = async () => {
-      axios.get('http://127.0.0.1:5000/api/v1/faqs')
+      axios.get(`${BACKEND_HOST}/api/v1/faqs`)
       .then(response => {
         setFaqs(response.data.data);
       })

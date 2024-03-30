@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ReactMediaRecorder } from 'react-media-recorder-2';
 import axios from 'axios';
 import { toast } from 'sonner';
+import BACKEND_HOST from '../api/api';
 
 const VoiceRecorder = () => {
   const [isRecording, setIsRecording] = useState(false);
@@ -19,7 +20,7 @@ const VoiceRecorder = () => {
             const formData = new FormData();
             formData.append('file', recordedAudioBlob, 'recording.wav')
         
-            const response = await axios.post('http://127.0.0.1:5000/api/v1/audio/upload', formData, {
+            const response = await axios.post(`${BACKEND_HOST}/api/v1/audio/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
