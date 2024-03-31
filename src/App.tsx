@@ -4,6 +4,7 @@ import About from './components/About'
 import FAQ from './components/FAQ'
 import Navigation from './components/Navigation'
 import Feedback from './components/Feedback'
+import NotFound from './components/NotFound'
 import './App.css'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path='/about' Component={About} />
           <Route path='/faq'  Component={FAQ} />
           <Route path='/feedback' Component={Feedback}/>
+          <Route path='*' Component={NotFound} />
         </Routes>
       </div>
     </Router>
